@@ -1,0 +1,71 @@
+/* Live animated gradient for the entire website background */
+body,
+#root {
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+
+.live-bid-site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: linear-gradient(120deg, #a8ff78, #78ffd6, #43e97b, #38f9d7, #11998e, #38ef7d, #43e97b);
+  background-size: 200% 200%;
+  animation: siteBgMove 18s ease-in-out infinite alternate;
+  opacity: 0.22;
+}
+
+@keyframes siteBgMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Keep previous overlays for header and main if you want extra depth */
+.live-bid-navbar-bg {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.live-bid-navbar-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, #43e97b 0%, #38f9d7 100%);
+  animation: navbarBgMove 12s ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+@keyframes navbarBgMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.live-bid-main-bg {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.live-bid-main-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, #f1f2b5 0%, #135058 100%);
+  background-size: 200% 200%;
+  animation: mainBgMove 18s ease-in-out infinite alternate;
+  opacity: 0.18;
+}
+@keyframes mainBgMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.live-bid-navbar-bg > .container,
+.live-bid-main-bg > *:not(.live-bid-main-overlay) {
+  position: relative;
+  z-index: 1;
+}

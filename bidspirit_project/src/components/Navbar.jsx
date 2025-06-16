@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const colors = {
     white: "#ffffff",
@@ -76,8 +77,16 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
-          <li>
-            Visitor Count: <span id="visitor-count">0</span>
+          <li className="navbar-item d-flex align-items-center ms-3">
+            <i className="bi bi-people-fill me-1" style={{ color: "#43e97b", fontSize: "1.3rem" }}></i>
+            <span className="fw-bold me-1" style={{ color: "#11998e" }}>Visitors:</span>
+            <span
+                id="visitor-count"
+                className="badge rounded-pill bg-success"
+                style={{ fontSize: "1rem", padding: "0.5em 1em", boxShadow: "0 2px 8px rgba(67,233,123,0.15)" }}
+            >
+                0
+            </span>
           </li>
         </ul>
       </div>
