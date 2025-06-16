@@ -2,6 +2,8 @@ import React from "react";
 import SearchBar from "../components/Searchbar";
 
 const Home = () => {
+
+
   return (
     <>
       <header className="bg-light border-bottom py-4 mb-4">

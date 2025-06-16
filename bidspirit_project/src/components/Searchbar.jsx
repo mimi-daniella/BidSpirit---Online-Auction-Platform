@@ -13,6 +13,6 @@ const SearchBar = () => (
       <i className="bi bi-search"></i>
     </button>
   </form>
-);
+)
 
 export default SearchBar;
