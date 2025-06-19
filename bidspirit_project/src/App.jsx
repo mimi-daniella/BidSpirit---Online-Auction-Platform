@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { NavLink } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -42,26 +43,34 @@ function App() {
   ];
 
   return (
-<<<<<<< HEAD
-    <>
-      <BrowserRouter>
-        <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="login" element={<LogInPopup/>}/>
-        </Routes>
-      </BrowserRouter>
-    </>
-=======
     <BrowserRouter>
       {!firstName ? (
-        <NamePrompt visitCount={visitCount} handleNameSubmit={handleNameSubmit} />
+        <NamePrompt
+          visitCount={visitCount}
+          handleNameSubmit={handleNameSubmit}
+        />
       ) : (
         <>
-          <Navbar onAuthClick={() => setShowAuth(true)} firstName={firstName} visitCount={visitCount} />
-            <Ticker messages={tickerMessages} />
-          <div style={showAuth ? { filter: "blur(6px)", pointerEvents: "none", userSelect: "none" } : {}}>
+          <NavLink to="/home" className="navbar-link">
+            Home
+          </NavLink>
+          <Navbar
+            onAuthClick={() => setShowAuth(true)}
+            firstName={firstName}
+            visitCount={visitCount}
+          />
+          <Ticker messages={tickerMessages} />
+          <div
+            style={
+              showAuth
+                ? {
+                    filter: "blur(6px)",
+                    pointerEvents: "none",
+                    userSelect: "none",
+                  }
+                : {}
+            }
+          >
             <Routes>
               <Route path="/" element={<Home firstName={firstName} />} />
               <Route path="/about" element={<About />} />
@@ -75,13 +84,16 @@ function App() {
             <div
               style={{
                 position: "fixed",
-                top: 0, left: 0, right: 0, zIndex: 1050,
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 1050,
                 background: "rgba(0,0,0,0.35)",
                 minHeight: "100vh",
                 display: "flex",
                 alignItems: "flex-start",
                 justifyContent: "center",
-                paddingTop: "60px"
+                paddingTop: "60px",
               }}
             >
               <div style={{ minWidth: 350, maxWidth: 420, width: "100%" }}>
@@ -92,7 +104,6 @@ function App() {
         </>
       )}
     </BrowserRouter>
->>>>>>> frontend-ui
   );
 }
 

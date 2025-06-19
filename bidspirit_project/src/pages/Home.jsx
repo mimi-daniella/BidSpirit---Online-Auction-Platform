@@ -326,7 +326,7 @@ const Home = ({ onAuthClick, firstName }) => {
           color: "#11998e",
           fontSize: "1.1rem"
         }}>
-          Hi, {firstName}!
+          {firstName}!
         </div>
       )}
 

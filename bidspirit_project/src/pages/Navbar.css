@@ -1,0 +1,15 @@
+/* Example CSS for navbar links */
+.navbar-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .navbar-link:hover {
+    color: #007bff; /* Color on hover */
+  }
+  
+  .navbar-link.active,
+  .navbar-link:active {
+    color: #ff5722; /* Color when active/clicked */
+  }

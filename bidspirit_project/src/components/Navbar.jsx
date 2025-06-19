@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Navbar as BsNavbar, Nav, Container } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -16,7 +17,11 @@ const navLinks = [
 
   const[showPopUp, setShowPopup] = useState(false);
 
-  return (
+return (
+  <>
+    <NavLink to="/home" className="navbar-link">
+      Home
+    </NavLink>
     <BsNavbar
       expand="md"
       bg="light"
@@ -72,7 +77,8 @@ const navLinks = [
         </BsNavbar.Collapse>
       </Container>
     </BsNavbar>
-  );
+  </>
+);
 };
 
 export default Navbar;
