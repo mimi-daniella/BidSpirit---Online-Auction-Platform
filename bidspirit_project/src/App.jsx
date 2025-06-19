@@ -1,12 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-<<<<<<< HEAD
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
-import LogInPopup from "./components/LogInPopup";
-import "bootstrap/dist/css/bootstrap.min.css";
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import './index.css';
-=======
 import React, { useState, useEffect } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from "./components/Navbar";
@@ -48,7 +40,6 @@ function App() {
     "Sign up now to participate in live bidding.",
     "Contact support for any assistance."
   ];
->>>>>>> frontend-ui
 
   return (
 <<<<<<< HEAD
