@@ -1,0 +1,13 @@
+.auctions-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #e6fff3 0%, #b2f7cc 40%, #43e97b 100%);
+  background-attachment: fixed;
+}
+
+.card.h-100.shadow-sm {
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.card.h-100.shadow-sm:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(67,233,123,0.15);
+}

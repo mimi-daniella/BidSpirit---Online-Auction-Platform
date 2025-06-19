@@ -1,106 +1,77 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import LogInPopup from "./LogInPopup";
+import { Navbar as BsNavbar, Nav, Container } from "react-bootstrap";
+import logo from "../assets/logo.png";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const colors = {
-    white: "#ffffff",
-    linkHoverColor: "#C85B20", // Added missing #
-};
+const navLinks = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/gallery", label: "Gallery" },
+  { to: "/auctions", label: "Auctions" },
+];
 
-const navStyles = {
-    backgroundColor: "white",
-    height: "80px",
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "0 20px",
-    boxSizing: "border-box",
-};
-
-
-const baseLinkStyles = {
-    color: "black",
-    textDecoration: "none",
-    fontSize: "18px",
-    fontWeight: "bold",
-    padding: "10px 15px",
-    display: "inline-flex",
-    alignItems: "center",
-    transition: "color 0.3s, transform 0.3s", // Smooth transition
-};
-
-const Navbar = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/gallery", label: "Gallery" },
-    { to: "/auctions", label: "Auctions" },
-    { to: "/menu", label: "Menu" },
-    { to: "/shops", label: "Shops" },
-    { to: "/register", label: "Log In"},
-  ];
+  const Navbar = ({ onAuthClick, visitCount, firstName }) => {
+    const [expanded, setExpanded] = useState(false);
 
   const[showPopUp, setShowPopup] = useState(false);
 
   return (
-    <nav className="navbar" style={{ padding: 0, margin: 0 }}>
-      <div className="navbar-container" style={navStyles}>
-        <Link to="/" className="navbar-logo" style={baseLinkStyles}>
-          BidSpirit
-        </Link>
-        <ul
-          className="navbar-menu"
-          style={{ 
-            listStyleType: "none",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "20px",
-            margin: 0,
-            padding: 0,
-          }}
-        >
-          {navLinks.map((link, idx) => (
-            <li className="navbar-item" key={link.to}>
-              <Link
+    <BsNavbar
+      expand="md"
+      bg="light"
+      fixed="top"
+      className="border-bottom shadow-sm"
+      expanded={expanded}
+    >
+      <Container fluid>
+        <div className="d-flex align-items-center">
+          <BsNavbar.Brand as={Link} to="/" className="fw-bold d-flex align-items-center me-3 mb-0">
+            <img
+              src={logo}
+              alt="BidSpirit Logo"
+              style={{ height: 38, width: 38, marginRight: 10, borderRadius: "50%", objectFit: "cover" }}
+            />
+            BidSpirit
+          </BsNavbar.Brand>
+          {/* Remove the greeting from here */}
+        </div>
+        <BsNavbar.Toggle
+          aria-controls="navbar-content"
+          onClick={() => setExpanded((prev) => !prev)}
+        />
+        <BsNavbar.Collapse id="navbar-content">
+          <Nav className="ms-auto align-items-center" style={{ marginRight: "2.5rem" }}>
+            {navLinks.map((link) => (
+              <Nav.Link
+                as={Link}
                 to={link.to}
-                className="navbar-link"
-                style={{
-                  ...baseLinkStyles,
-                  color: hoveredIndex === idx ? colors.linkHoverColor : baseLinkStyles.color,
-                  transform: hoveredIndex === idx ? "scale(1.08)" : "scale(1)",
-                }}
-                onMouseEnter={() => setHoveredIndex(idx)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={ link.label === "Log In" ? (e) =>{
-                  e.preventDefault();
-                  setShowPopup(true);
-                } : undefined}
+                key={link.to}
+                onClick={() => setExpanded(false)}
+                style={{ fontWeight: 500, fontSize: 17 }}
               >
                 {link.label}
-              </Link>
-            </li>
-          ))}
-
-          {showPopUp && <LogInPopup toggle={() => setShowPopup(false)}/>}
-          <li className="navbar-item d-flex align-items-center ms-3">
-            <i className="bi bi-people-fill me-1" style={{ color: "#43e97b", fontSize: "1.3rem" }}></i>
-            <span className="fw-bold me-1" style={{ color: "#11998e" }}>Visitors:</span>
-            <span
-                id="visitor-count"
-                className="badge rounded-pill bg-success"
-                style={{ fontSize: "1rem", padding: "0.5em 1em", boxShadow: "0 2px 8px rgba(67,233,123,0.15)" }}
+              </Nav.Link>
+            ))}
+            <Nav.Link
+              as="button"
+              className="btn btn-success fw-bold ms-2"
+              style={{ padding: "7px 18px", fontSize: "1rem" }}
+              onClick={() => {
+                setExpanded(false);
+                if (onAuthClick) onAuthClick();
+              }}
             >
-                0
-            </span>
-          </li>
-        </ul>
-      </div>
-    </nav>
+              Sign Up
+            </Nav.Link>
+          </Nav>
+          <span className="ms-3 text-secondary d-none d-md-inline" style={{ fontSize: "1rem", whiteSpace: "nowrap" }}>
+            <i className="bi bi-people me-1"></i>
+            Visitors: {visitCount}
+          </span>
+        </BsNavbar.Collapse>
+      </Container>
+    </BsNavbar>
   );
 };
 

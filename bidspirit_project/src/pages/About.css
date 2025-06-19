@@ -1,0 +1,7 @@
+.about-green-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #e6fff3 0%, #b2f7cc 40%, #43e97b 100%);
+  /* You can add more shades or tweak the stops for more depth */
+  background-attachment: fixed;
+}

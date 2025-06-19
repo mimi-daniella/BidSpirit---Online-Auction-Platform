@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SearchBar from "../components/Searchbar";
 import AuctionSection from "../components/AuctionSection";
 import "./Home.css";
 import "./HomeLiveBg.css";
+import img6 from "../assets/img6.jpg"; // Or any relevant image
 import auction1 from "../assets/auction1.jpg";
 import auction2 from "../assets/auction2.jpg";
 import auction3 from "../assets/auction3.jpg";
@@ -36,7 +38,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-// Helper component for popover/modal-in-place
 const ProductPopover = ({ product, onClose }) => (
   <div
     style={{
@@ -258,12 +259,11 @@ const auctionSections = [
   }
 ];
 
-const Home = () => {
-  const [modalInfo, setModalInfo] = useState({
-    show: false,
-    product: null,
-    section: null,
-  });
+const Home = ({ onAuthClick, firstName }) => {
+  // Add at the top inside your Home component
+  const [showSellerModal, setShowSellerModal] = useState(false);
+
+  const [modalInfo, setModalInfo] = useState({ show: false, product: null, section: null });
 
   const handleCardClick = (product, section) => {
     setModalInfo({ show: true, product, section });
@@ -277,7 +277,6 @@ const Home = () => {
   const controlsLeft = useAnimation();
   const controlsRight = useAnimation();
 
-  // Add local time and date for the bottom bar
   const now = new Date();
   const localTime = now.toLocaleTimeString([], {
     hour: "2-digit",
@@ -285,7 +284,7 @@ const Home = () => {
   });
   const localDate = now.toLocaleDateString("en-GB");
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controlsLeft.start({
         x: 0,
@@ -313,19 +312,34 @@ const Home = () => {
 
   return (
     <>
-      {/* Live animated site-wide background */}
+      {firstName && (
+        <div style={{
+          position: "fixed",
+          top: 18,
+          right: 30,
+          zIndex: 2000,
+          background: "#fff",
+          borderRadius: "20px",
+          boxShadow: "0 2px 8px rgba(67,233,123,0.10)",
+          padding: "6px 18px",
+          fontWeight: 600,
+          color: "#11998e",
+          fontSize: "1.1rem"
+        }}>
+          Hi, {firstName}!
+        </div>
+      )}
+
       <div className="live-bid-site-bg"></div>
 
-      {/* Live animated background for the header/navbar */}
       <header className="bg-light border-bottom py-4 mb-4 live-green-bg live-bid-navbar-bg">
         <div className="live-bid-navbar-overlay"></div>
-        <div className="container position-relative">
+        <div className="container-fluid position-relative">
           <div className="row justify-content-center mb-3">
             <div className="col-md-8 d-flex justify-content-center">
-              <SearchBar 
+              <SearchBar
                 products={[
                   ...auctionSections.flatMap((s) => s.products),
-                  // Add more products if needed
                 ]}
                 onResultClick={(product) => setModalInfo({ show: true, product })}
               />
@@ -360,11 +374,10 @@ const Home = () => {
         </div>
       </header>
 
-      {/* Live animated background for the main content */}
       <main className="position-relative live-bid-main-bg" style={{ width: "100vw", maxWidth: "100%", left: "50%", transform: "translateX(-50%)" }}>
         <div className="live-bid-main-overlay"></div>
         <h2 className="text-center mb-3" style={{ color: "#11998e" }}>
-          Hello, Guest!
+          {firstName ? `Hello, ${firstName}!` : "Hello, Guest!"}
         </h2>
         <h1 className="text-center fw-bold mb-2" style={{ fontSize: "2.5rem", letterSpacing: "1px" }}>
           Welcome to BidSpirit Online Auction Platform
@@ -376,7 +389,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Fine Art Section */}
         <div className="my-5 p-4 bg-white rounded shadow-sm">
           <div className="mb-4">
             <div className="d-flex justify-content-center align-items-center gap-2">
@@ -394,8 +406,7 @@ const Home = () => {
                 {auctionSections[0].title}
               </h2>
             </div>
-            <div className="d-flex justify-content-center">
-            </div>
+            <div className="d-flex justify-content-center"></div>
           </div>
           <div className="row justify-content-center">
             {auctionSections[0].products.map((product, idx) => (
@@ -431,11 +442,15 @@ const Home = () => {
             ))}
           </div>
           <div className="text-center mt-3">
-            <button className="btn btn-outline-success px-4 fw-bold">See More</button>
+            <Link
+              to={`/gallery?tab=Fine Arts`} // or use the section name dynamically
+              className="btn btn-outline-success px-4 fw-bold"
+            >
+              See More
+            </Link>
           </div>
         </div>
 
-        {/* Antiques Section */}
         <div className="my-5 p-4 bg-white rounded shadow-sm">
           <div className="mb-4">
             <div className="d-flex justify-content-center align-items-center gap-2">
@@ -453,8 +468,7 @@ const Home = () => {
                 {auctionSections[1].title}
               </h2>
             </div>
-            <div className="d-flex justify-content-center">
-            </div>
+            <div className="d-flex justify-content-center"></div>
           </div>
           <div className="row justify-content-center">
             {auctionSections[1].products.map((product, idx) => (
@@ -490,13 +504,16 @@ const Home = () => {
             ))}
           </div>
           <div className="text-center mt-3">
-            <button className="btn btn-outline-success px-4 fw-bold">See More</button>
+            <Link
+              to={`/gallery?tab=Fine Arts`} // or use the section name dynamically
+              className="btn btn-outline-success px-4 fw-bold"
+            >
+              See More
+            </Link>
           </div>
         </div>
 
-        {/* Free Delivery & Bid Insurance animation row */}
         <div className="row my-4" ref={ref}>
-          {/* Free Delivery */}
           <motion.div
             className="col-12 col-md-6 mb-3 mb-md-0"
             initial={{ x: "-100vw", opacity: 0 }}
@@ -532,7 +549,6 @@ const Home = () => {
               ></div>
             </div>
           </motion.div>
-          {/* Bid Insurance */}
           <motion.div
             className="col-12 col-md-6"
             initial={{ x: "100vw", opacity: 0 }}
@@ -570,13 +586,12 @@ const Home = () => {
           </motion.div>
         </div>
 
-        {/* Sponsored Auctions Section */}
         <div className="my-5 p-4 bg-white rounded shadow-sm">
           <div className="mb-4">
             <div className="d-flex justify-content-center align-items-center gap-2">
               <i className="bi bi-star-fill" style={{ fontSize: "2.2rem", color: "#f1c40f", verticalAlign: "middle" }}></i>
               <style>
-              @import url('https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap');
+                {`@import url('https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap');`}
               </style>
               <h2
                 className="fw-bold mb-0"
@@ -594,8 +609,7 @@ const Home = () => {
                 Sponsored Auctions
               </h2>
             </div>
-            <div className="d-flex justify-content-center">
-            </div>
+            <div className="d-flex justify-content-center"></div>
           </div>
           <div className="row justify-content-center">
             {auctionData.map((auction) => (
@@ -622,7 +636,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Furniture, Jewelleries, Collectibles Sections */}
         {auctionSections.slice(2).map((section, sectionIdx) => (
           <div className="my-5 p-4 bg-white rounded shadow-sm" key={section.title}>
             <div className="mb-4">
@@ -641,8 +654,7 @@ const Home = () => {
                   {section.title}
                 </h2>
               </div>
-              <div className="d-flex justify-content-center">
-              </div>
+              <div className="d-flex justify-content-center"></div>
             </div>
             <div className="row justify-content-center">
               {section.products.map((product, idx2) => (
@@ -678,76 +690,103 @@ const Home = () => {
               ))}
             </div>
             <div className="text-center mt-3">
-              <button className="btn btn-outline-success px-4 fw-bold">See More</button>
+              <Link
+              to={`/gallery?tab=Fine Arts`} // or use the section name dynamically
+              className="btn btn-outline-success px-4 fw-bold"
+              >
+              See More
+              </Link>
             </div>
           </div>
         ))}
       </main>
       
-      {/* Auction Section */}
       <AuctionSection />
 
-      {/* Bottom Banner */}
-    <div
-      className="bg-light text-center py-5 my-5"
-      style={{
-        background: "linear-gradient(90deg, #f1f2b5 0%,rgb(0, 248, 174) 50%,rgb(66, 243, 128) 100%)",
-        color: "#135058",
-        borderRadius: "18px",
-        boxShadow: "0 4px 24px rgba(67,233,123,0.08)"
-      }}
-    >
-      <h2 className="fw-bold mb-3" style={{ color: "black" }}>
-        Join the Auction Revolution!
-      </h2>
-      <p className="mb-4 fs-5">
-        BidSpirit is your gateway to a world of unique items and thrilling auctions.<br />
-        Sign up today and start bidding!
-      </p>
-      <div className="row justify-content-center mb-4">
-        <div className="col-12 col-md-4 mb-3 mb-md-0">
-          <div className="d-flex flex-column align-items-center">
-            <i className="bi bi-shield-lock-fill fs-1 mb-2" style={{ color: "#43e97b" }}></i>
-            <span className="fw-semibold">Secure Payments</span>
+<div
+  className="bg-light py-5 my-5"
+  style={{
+    background: "linear-gradient(90deg, #f1f2b5 0%,rgb(0, 248, 174) 50%,rgb(66, 243, 128) 100%)",
+    color: "#135058",
+    borderRadius: "18px",
+    boxShadow: "0 4px 24px rgba(67,233,123,0.08)"
+  }}
+>
+  <div className="container">
+    <div className="row align-items-center flex-column-reverse flex-md-row">
+      <div className="col-12 col-md-6 text-center text-md-start mt-4 mt-md-0">
+        <h2 className="fw-bold mb-3" style={{ color: "black", fontSize: "2.2rem" }}>
+          Join the <span style={{ color: "#11998e" }}>Auction Revolution!</span>
+        </h2>
+        <p className="mb-4 fs-5">
+          BidSpirit is your gateway to a world of unique items and thrilling auctions.<br />
+          Sign up today and start bidding!
+        </p>
+        <div className="row justify-content-center mb-4">
+          <div className="col-12 col-sm-4 mb-3 mb-sm-0">
+            <div className="d-flex flex-column align-items-center">
+              <i className="bi bi-shield-lock-fill fs-1 mb-2" style={{ color: "#43e97b" }}></i>
+              <span className="fw-semibold">Secure Payments</span>
+            </div>
+          </div>
+          <div className="col-12 col-sm-4 mb-3 mb-sm-0">
+            <div className="d-flex flex-column align-items-center">
+              <i className="bi bi-person-check-fill fs-1 mb-2" style={{ color: "#2980b9" }}></i>
+              <span className="fw-semibold">Verified Sellers</span>
+            </div>
+          </div>
+          <div className="col-12 col-sm-4">
+            <div className="d-flex flex-column align-items-center">
+              <i className="bi bi-headset fs-1 mb-2" style={{ color: "#e67e22" }}></i>
+              <span className="fw-semibold">24/7 Support</span>
+            </div>
           </div>
         </div>
-        <div className="col-12 col-md-4 mb-3 mb-md-0">
-          <div className="d-flex flex-column align-items-center">
-            <i className="bi bi-person-check-fill fs-1 mb-2" style={{ color: "#2980b9" }}></i>
-            <span className="fw-semibold">Verified Sellers</span>
-          </div>
+        <div className="bg-white rounded shadow-sm py-3 px-4 mb-3 d-inline-block">
+          <span className="fw-bold" style={{ color: "#43e97b", fontSize: "1.2rem" }}>
+            <i className="bi bi-people-fill me-2"></i>10,000+ Happy Bidders
+          </span>
+          <span className="mx-3 text-muted">|</span>
+          <span className="fw-bold" style={{ color: "#2980b9", fontSize: "1.2rem" }}>
+            <i className="bi bi-hammer me-2"></i>100+ Auctions Weekly
+          </span>
         </div>
-        <div className="col-12 col-md-4">
-          <div className="d-flex flex-column align-items-center">
-            <i className="bi bi-headset fs-1 mb-2" style={{ color: "#e67e22" }}></i>
-            <span className="fw-semibold">24/7 Support</span>
-          </div>
+        <div className="d-flex flex-column flex-md-row justify-content-center justify-content-md-start gap-3 mt-3">
+          <Link to="/auth" className="btn btn-success px-4 py-2 fw-bold">
+            <i className="bi bi-person-plus me-2"></i>Sign Up Now
+          </Link>
+          <button
+            className="btn btn-outline-primary px-4 py-2 fw-bold d-flex align-items-center"
+            type="button"
+            onClick={() => setShowSellerModal(true)}
+          >
+            <i className="bi bi-shop-window me-2"></i>
+            Become a Seller
+            <span className="badge bg-success ms-2" style={{ fontSize: "0.9em" }}>
+              Trusted
+            </span>
+          </button>
         </div>
       </div>
-      <div className="row justify-content-center mb-4">
-        <div className="col-12 col-md-6">
-          <div className="bg-white rounded shadow-sm py-3 px-4 mb-3">
-            <span className="fw-bold" style={{ color: "#43e97b", fontSize: "1.2rem" }}>
-              <i className="bi bi-people-fill me-2"></i>10,000+ Happy Bidders
-            </span>
-            <span className="mx-3 text-muted">|</span>
-            <span className="fw-bold" style={{ color: "#2980b9", fontSize: "1.2rem" }}>
-              <i className="bi bi-hammer me-2"></i>100+ Auctions Weekly
-            </span>
-          </div>
-        </div>
-      </div>
-      <div className="d-flex flex-column flex-md-row justify-content-center gap-3">
-        <button className="btn btn-success px-4 py-2 fw-bold">
-          <i className="bi bi-person-plus me-2"></i>Sign Up Now
-        </button>
-        <button className="btn btn-outline-primary px-4 py-2 fw-bold">
-          <i className="bi bi-shop-window me-2"></i>Become a Seller
-        </button>
+      <div className="col-12 col-md-6 text-center">
+        <img
+          src={img6}
+          alt="Join Auction"
+          className="img-fluid"
+          style={{
+            maxHeight: 320,
+            borderRadius: 18,
+            boxShadow: "0 8px 32px rgba(67,233,123,0.13)",
+            objectFit: "cover",
+            width: "100%",
+            marginBottom: "1rem"
+          }}
+        />
       </div>
     </div>
+  </div>
+</div>
 
-      {/* Footer */}
       <footer className="bg-dark text-white mt-5 pt-4 pb-2 border-top border-success" style={{ letterSpacing: ".01em" }}>
         <div className="container">
           <div className="row text-center text-md-start">
@@ -797,7 +836,6 @@ const Home = () => {
         </div>
       </footer>
 
-      {/* Bottom Time Bar */}
       <div
         className="bg-gradient"
         style={{
@@ -810,28 +848,10 @@ const Home = () => {
           boxShadow: "0 -2px 12px rgba(67,233,123,0.10)"
         }}
       >
-        <div className="container py-2 d-flex flex-column flex-md-row justify-content-between align-items-center">
-          <span>
-            <i className="bi bi-geo-alt-fill me-2"></i>
-            Lagos, Nigeria
-          </span>
-          <span>
-            <i className="bi bi-calendar-event me-2"></i>
-            {localDate}
-            <span className="mx-2">|</span>
-            <i className="bi bi-clock me-2"></i>
-            {localTime} WAT
-          </span>
-          <span>
-            <i className="bi bi-globe2 me-2"></i>
-            Bid globally, win locally!
-          </span>
-        </div>
       </div>
 
-      {/* Modal for Product Details */}
       {modalInfo.show && modalInfo.product && (
-      <div
+        <div
           className="modal fade show"
           tabIndex="-1"
           role="dialog"
@@ -889,7 +909,57 @@ const Home = () => {
         </div>
       )}
       <div className="modal-backdrop fade show" style={{ display: modalInfo.show ? "block" : "none" }}></div>
-      {/* End of Modal */}
+
+      {showSellerModal && (
+      <div
+        className="modal fade show"
+        tabIndex="-1"
+        role="dialog"
+        aria-modal="true"
+        style={{
+          display: "block",
+          backgroundColor: "rgba(0,0,0,0.5)",
+          zIndex: 3000
+        }}
+        onClick={() => setShowSellerModal(false)}
+      >
+        <div
+          className="modal-dialog modal-dialog-centered"
+          role="document"
+          onClick={e => e.stopPropagation()}
+        >
+          <div className="modal-content" style={{ animation: "fadeInModal 0.3s" }}>
+            <div className="modal-header border-0">
+              <h5 className="modal-title fw-bold" style={{ color: "#11998e" }}>
+                Become a Seller on BidSpirit
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                aria-label="Close"
+                onClick={() => setShowSellerModal(false)}
+              ></button>
+            </div>
+            <div className="modal-body text-center">
+              <i className="bi bi-shop-window display-3 text-primary mb-3"></i>
+              <p className="mb-3" style={{ fontSize: "1.1rem", color: "#555" }}>
+                Ready to reach thousands of bidders? <br />
+                Register your shop and start selling today! <br />
+                For more information, contact us at <a href="mailto:support@bidspirit.co" className="fw-bold text-success">support@bidspirit.co</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <style>
+          {`
+            @keyframes fadeInModal {
+              from { transform: translateY(40px); opacity: 0; }
+              to { transform: translateY(0); opacity: 1; }
+            }
+          `}
+        </style>
+      </div>
+    )}
     </>
   );
 };
