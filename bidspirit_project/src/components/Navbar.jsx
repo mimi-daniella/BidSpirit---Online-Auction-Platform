@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import LogInPopup from "./LogInPopup";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const colors = {
@@ -18,6 +19,7 @@ const navStyles = {
     padding: "0 20px",
     boxSizing: "border-box",
 };
+
 
 const baseLinkStyles = {
     color: "black",
@@ -39,8 +41,10 @@ const Navbar = () => {
     { to: "/auctions", label: "Auctions" },
     { to: "/menu", label: "Menu" },
     { to: "/shops", label: "Shops" },
-    { to: "/register", label: "Log In" },
+    { to: "/register", label: "Log In"},
   ];
+
+  const[showPopUp, setShowPopup] = useState(false);
 
   return (
     <nav className="navbar" style={{ padding: 0, margin: 0 }}>
@@ -72,11 +76,17 @@ const Navbar = () => {
                 }}
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
+                onClick={ link.label === "Log In" ? (e) =>{
+                  e.preventDefault();
+                  setShowPopup(true);
+                } : undefined}
               >
                 {link.label}
               </Link>
             </li>
           ))}
+
+          {showPopUp && <LogInPopup toggle={() => setShowPopup(false)}/>}
           <li className="navbar-item d-flex align-items-center ms-3">
             <i className="bi bi-people-fill me-1" style={{ color: "#43e97b", fontSize: "1.3rem" }}></i>
             <span className="fw-bold me-1" style={{ color: "#11998e" }}>Visitors:</span>

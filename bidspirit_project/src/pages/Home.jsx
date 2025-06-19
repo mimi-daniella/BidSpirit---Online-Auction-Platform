@@ -259,6 +259,57 @@ const auctionSections = [
 ];
 
 const Home = () => {
+  const [modalInfo, setModalInfo] = useState({
+    show: false,
+    product: null,
+    section: null,
+  });
+
+  const handleCardClick = (product, section) => {
+    setModalInfo({ show: true, product, section });
+  };
+
+  const handleCloseModal = () => {
+    setModalInfo({ show: false, product: null, section: null });
+  };
+
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 });
+  const controlsLeft = useAnimation();
+  const controlsRight = useAnimation();
+
+  // Add local time and date for the bottom bar
+  const now = new Date();
+  const localTime = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const localDate = now.toLocaleDateString("en-GB");
+
+  React.useEffect(() => {
+    if (inView) {
+      controlsLeft.start({
+        x: 0,
+        opacity: 1,
+        transition: { type: "tween", duration: 0.8 },
+      });
+      controlsRight.start({
+        x: 0,
+        opacity: 1,
+        transition: { type: "tween", duration: 0.8 },
+      });
+    } else {
+      controlsLeft.start({
+        x: "-100vw",
+        opacity: 0,
+        transition: { duration: 0.5 },
+      });
+      controlsRight.start({
+        x: "100vw",
+        opacity: 0,
+        transition: { duration: 0.5 },
+      });
+    }
+  }, [inView, controlsLeft, controlsRight]);
 
   return (
     <>
