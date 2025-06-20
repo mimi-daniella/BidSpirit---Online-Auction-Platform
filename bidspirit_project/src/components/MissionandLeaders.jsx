@@ -89,7 +89,6 @@ const MissionAndLeaders = () => (
     {/* Meet Our Leaders Section */}
     <section className="mt-5">
       <div className="col-md-4 mb-3">
-        <h6 className="fw-bold text-success mb-3">Quick Links</h6>
         <ul className="list-unstyled small">
           <li>
             <Link to="/about" className="text-white-50 text-decoration-none">

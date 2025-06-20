@@ -80,7 +80,6 @@ const AuctionSection = () => {
         </div>
       </div>
 
-      {/* Three Columns */}
       <div className="row text-center text-md-start">
         {/* Popular Items */}
         <div className="col-md-4 mb-4">

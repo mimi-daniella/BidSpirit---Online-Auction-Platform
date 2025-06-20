@@ -71,12 +71,12 @@ const About = () => (
                 <li className="mb-3">
                   <i className="bi bi-telephone-fill text-success me-2"></i>
                   <a href="tel:+2348000000000" className="text-decoration-none text-dark">
-                    +234 800 000 0000
+                    +234 816 945 3274 | +234 925 118 9230
                   </a>
                 </li>
                 <li>
                   <i className="bi bi-geo-alt-fill text-success me-2"></i>
-                  Lagos, Nigeria
+                  12 Kunmi Adeyemo Close, Oke-Afa Isolo, Lagos. Nigeria
                 </li>
               </ul>
             </div>
@@ -85,6 +85,7 @@ const About = () => (
           <div className="col-md-7">
             <div className="bg-white rounded shadow-sm p-4">
               <form>
+                <h3 className="fw-bold mb-4" style={{ color: "#11998e" }}>Feedback</h3>
                 <div className="mb-3">
                   <label className="form-label fw-semibold">Name</label>
                   <input type="text" className="form-control" placeholder="Your Name" required />
@@ -103,7 +104,6 @@ const About = () => (
           </div>
         </div>
       </div>
-      {/* End Contact Section */}
     </div>
   </div>
 );

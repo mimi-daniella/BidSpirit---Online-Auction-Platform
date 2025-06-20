@@ -47,9 +47,9 @@ function App() {
         <NamePrompt visitCount={visitCount} handleNameSubmit={handleNameSubmit} />
       ) : (
         <>
-          <Navbar onAuthClick={() => setShowAuth(true)} firstName={firstName} visitCount={visitCount} />
+          <Navbar firstName={firstName} visitCount={visitCount} onAuthClick={() => {}} />
             <Ticker messages={tickerMessages} />
-          <div style={showAuth ? { filter: "blur(6px)", pointerEvents: "none", userSelect: "none" } : {}}>
+          <div style={showAuth ? { filter: "blur(6px)", pointerEvents: "none", userSelect: "none", paddingTop: "80px" } : {}} >
             <Routes>
               <Route path="/" element={<Home firstName={firstName} />} />
               <Route path="/about" element={<About />} />

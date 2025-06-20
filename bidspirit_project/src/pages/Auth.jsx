@@ -25,7 +25,6 @@ const Auth = ({ onClose }) => {
     }
     setError("");
     setSuccess("Login successful!");
-    // Add real authentication logic here
   };
 
   const handleRegister = (e) => {
@@ -42,7 +41,6 @@ const Auth = ({ onClose }) => {
     }
     setError("");
     setSuccess("Registration successful! You can now log in.");
-    // Add real registration logic here
   };
 
   return (

@@ -6,7 +6,7 @@ import SearchBar from "../components/Searchbar";
 import AuctionSection from "../components/AuctionSection";
 import "./Home.css";
 import "./HomeLiveBg.css";
-import img6 from "../assets/img6.jpg"; // Or any relevant image
+import img6 from "../assets/img6.jpg"; 
 import auction1 from "../assets/auction1.jpg";
 import auction2 from "../assets/auction2.jpg";
 import auction3 from "../assets/auction3.jpg";
@@ -260,7 +260,6 @@ const auctionSections = [
 ];
 
 const Home = ({ onAuthClick, firstName }) => {
-  // Add at the top inside your Home component
   const [showSellerModal, setShowSellerModal] = useState(false);
 
   const [modalInfo, setModalInfo] = useState({ show: false, product: null, section: null });
@@ -293,24 +292,6 @@ const Home = ({ onAuthClick, firstName }) => {
 
   return (
     <>
-      {firstName && (
-        <div style={{
-          position: "fixed",
-          top: 18,
-          right: 30,
-          zIndex: 2000,
-          background: "#fff",
-          borderRadius: "20px",
-          boxShadow: "0 2px 8px rgba(67,233,123,0.10)",
-          padding: "6px 18px",
-          fontWeight: 600,
-          color: "#11998e",
-          fontSize: "1.1rem"
-        }}>
-          Hi, {firstName}!
-        </div>
-      )}
-
       <div className="live-bid-site-bg"></div>
 
       <header className="bg-light border-bottom py-4 mb-4 live-green-bg live-bid-navbar-bg">
@@ -424,7 +405,7 @@ const Home = ({ onAuthClick, firstName }) => {
           </div>
           <div className="text-center mt-3">
             <Link
-              to={`/gallery?tab=Fine Arts`} // or use the section name dynamically
+              to={`/gallery?tab=Fine Arts`} 
               className="btn btn-outline-success px-4 fw-bold"
             >
               See More
@@ -486,7 +467,7 @@ const Home = ({ onAuthClick, firstName }) => {
           </div>
           <div className="text-center mt-3">
             <Link
-              to={`/gallery?tab=Fine Arts`} // or use the section name dynamically
+              to={`/gallery?tab=Fine Arts`} 
               className="btn btn-outline-success px-4 fw-bold"
             >
               See More
@@ -672,7 +653,7 @@ const Home = ({ onAuthClick, firstName }) => {
             </div>
             <div className="text-center mt-3">
               <Link
-              to={`/gallery?tab=Fine Arts`} // or use the section name dynamically
+              to={`/gallery?tab=Fine Arts`} 
               className="btn btn-outline-success px-4 fw-bold"
               >
               See More
@@ -941,6 +922,7 @@ const Home = ({ onAuthClick, firstName }) => {
         </style>
       </div>
     )}
+    
     </>
   );
 };

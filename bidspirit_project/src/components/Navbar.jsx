@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Navbar as BsNavbar, Nav, Container } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '../styles/Navbar.css'; 
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -11,15 +12,16 @@ const navLinks = [
   { to: "/auctions", label: "Auctions" },
 ];
 
-  const Navbar = ({ onAuthClick, visitCount, firstName }) => {
-    const [expanded, setExpanded] = useState(false);
+const Navbar = ({ onAuthClick, visitCount, firstName }) => {
+  const [expanded, setExpanded] = useState(false);
+  const location = useLocation();
 
   return (
     <BsNavbar
       expand="md"
       bg="light"
       fixed="top"
-      className="border-bottom shadow-sm"
+      className="border-bottom shadow-sm fade-in-navbar"
       expanded={expanded}
     >
       <Container fluid>
@@ -32,12 +34,13 @@ const navLinks = [
             />
             BidSpirit
           </BsNavbar.Brand>
-          {/* Remove the greeting from here */}
         </div>
+
         <BsNavbar.Toggle
           aria-controls="navbar-content"
           onClick={() => setExpanded((prev) => !prev)}
         />
+
         <BsNavbar.Collapse id="navbar-content">
           <Nav className="ms-auto align-items-center" style={{ marginRight: "2.5rem" }}>
             {navLinks.map((link) => (
@@ -46,11 +49,12 @@ const navLinks = [
                 to={link.to}
                 key={link.to}
                 onClick={() => setExpanded(false)}
-                style={{ fontWeight: 500, fontSize: 17 }}
+                className={`custom-nav-link ${location.pathname === link.to ? 'active' : ''}`}
               >
                 {link.label}
               </Nav.Link>
             ))}
+
             <Nav.Link
               as="button"
               className="btn btn-success fw-bold ms-2"
@@ -63,10 +67,29 @@ const navLinks = [
               Sign Up
             </Nav.Link>
           </Nav>
-          <span className="ms-3 text-secondary d-none d-md-inline" style={{ fontSize: "1rem", whiteSpace: "nowrap" }}>
-            <i className="bi bi-people me-1"></i>
-            Visitors: {visitCount}
-          </span>
+
+          <div className="d-none d-md-flex align-items-center ms-3" style={{ gap: "10px" }}>
+            <span className="text-secondary" style={{ fontSize: "1rem", whiteSpace: "nowrap" }}>
+              <i className="bi bi-people me-1"></i>
+              Visitors: {visitCount}
+            </span>
+
+            {firstName && (
+              <div style={{
+                background: "#fff",
+                borderRadius: "20px",
+                boxShadow: "0 2px 8px rgba(67,233,123,0.10)",
+                padding: "6px 14px",
+                fontWeight: 600,
+                color: "#11998e",
+                fontSize: "1rem"
+              }}>
+                {firstName}
+              </div>
+            )}
+          </div>
+
+
         </BsNavbar.Collapse>
       </Container>
     </BsNavbar>
