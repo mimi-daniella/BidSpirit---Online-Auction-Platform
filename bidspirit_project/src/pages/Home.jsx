@@ -312,24 +312,6 @@ const Home = ({ onAuthClick, firstName }) => {
 
   return (
     <>
-      {firstName && (
-        <div style={{
-          position: "fixed",
-          top: 18,
-          right: 30,
-          zIndex: 2000,
-          background: "#fff",
-          borderRadius: "20px",
-          boxShadow: "0 2px 8px rgba(67,233,123,0.10)",
-          padding: "6px 18px",
-          fontWeight: 600,
-          color: "#11998e",
-          fontSize: "1.1rem"
-        }}>
-          {firstName}!
-        </div>
-      )}
-
       <div className="live-bid-site-bg"></div>
 
       <header className="bg-light border-bottom py-4 mb-4 live-green-bg live-bid-navbar-bg">
