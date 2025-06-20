@@ -1,0 +1,265 @@
+[
+  {
+    "id": 1,
+    "title": "Modern Art",
+    "image": "/assets/img1.jpg",
+    "date": "2025-07-01",
+    "status": "Live",
+    "price": "₦50,000",
+    "desc": "A vibrant piece of modern art, perfect for contemporary spaces."
+  },
+  {
+    "id": 2,
+    "title": "Classic Portrait",
+    "image": "/assets/img2.jpg",
+    "date": "2025-07-03",
+    "status": "Upcoming",
+    "price": "₦35,000",
+    "desc": "A timeless classic portrait, beautifully framed."
+  },
+  {
+    "id": 3,
+    "title": "Abstract Colors",
+    "image": "/assets/img3.jpg",
+    "date": "2025-07-02",
+    "status": "Live",
+    "price": "₦42,000",
+    "desc": "An abstract painting with bold colors and dynamic shapes."
+  },
+  {
+    "id": 4,
+    "title": "Nature's Beauty",
+    "image": "/assets/img4.jpg",
+    "date": "2025-07-10",
+    "status": "Completed",
+    "price": "₦28,000",
+    "desc": "A serene landscape capturing the beauty of nature."
+  },
+  {
+    "id": 5,
+    "title": "Antique Telescope",
+    "image": "/assets/antique1.jpg",
+    "date": "2025-07-05",
+    "status": "Upcoming",
+    "price": "₦60,000",
+    "desc": "A rare antique telescope for collectors and enthusiasts."
+  },
+  {
+    "id": 6,
+    "title": "Vintage Clock",
+    "image": "/assets/antique2.jpg",
+    "date": "2025-07-07",
+    "status": "Live",
+    "price": "₦30,000",
+    "desc": "A vintage clock with intricate details and craftsmanship."
+  },
+  {
+    "id": 7,
+    "title": "Elegant Sofa",
+    "image": "/assets/furniture1.jpg",
+    "date": "2025-07-08",
+    "status": "Upcoming",
+    "price": "₦120,000",
+    "desc": "A luxurious and comfortable sofa for your living room."
+  },
+  {
+    "id": 8,
+    "title": "Wooden Chair",
+    "image": "/assets/furniture2.jpg",
+    "date": "2025-07-09",
+    "status": "Completed",
+    "price": "₦18,000",
+    "desc": "A handcrafted wooden chair with a classic design."
+  },
+  {
+    "id": 9,
+    "title": "Tim's Telephone",
+    "image": "/assets/antique4.jpg",
+    "date": "2025-08-19",
+    "status": "Upcoming",
+    "price": "₦23,000",
+    "desc": "An antique telephone with intricate carvings, perfect for collectors."
+  },
+
+    {
+      "id": 10,
+      "title": "Antique Gramophone",
+      "image": "/assets/antique3.jpg",
+      "date": "2025-09-12",
+      "status": "Upcoming",
+      "price": "₦85,000",
+      "desc": "Spin up some vintage vibes with this classic gramophone! Strict: A well-preserved antique gramophone, ideal for collectors."
+    },
+    {
+      "id": 11,
+      "title": "Auction Masterpiece",
+      "image": "/assets/auction1.jpg",
+      "date": "2025-07-22",
+      "status": "Live",
+      "price": "₦150,000",
+      "desc": "The star of any auction—make it yours! Strict: A featured auction item of exceptional value."
+    },
+    {
+      "id": 12,
+      "title": "Rare Auction Find",
+      "image": "/assets/auction2.jpg",
+      "date": "2025-08-03",
+      "status": "Upcoming",
+      "price": "₦99,000",
+      "desc": "You found it! The rarest of the rare. Strict: A unique item rarely seen at public auctions."
+    },
+    {
+      "id": 13,
+      "title": "Collector's Dream",
+      "image": "/assets/auction3.jpg",
+      "date": "2025-10-15",
+      "status": "Completed",
+      "price": "₦200,000",
+      "desc": "Every collector's fantasy, now a reality! Strict: A highly sought-after collectible, recently auctioned."
+    },
+    {
+      "id": 14,
+      "title": "Classic Collectible",
+      "image": "/assets/collectible1.jpg",
+      "date": "2025-07-29",
+      "status": "Live",
+      "price": "₦45,000",
+      "desc": "Add some classic cool to your shelf! Strict: A classic collectible item in excellent condition."
+    },
+    {
+      "id": 15,
+      "title": "Vintage Keepsake",
+      "image": "/assets/collectible2.jpg",
+      "date": "2025-08-11",
+      "status": "Upcoming",
+      "price": "₦38,000",
+      "desc": "A keepsake that tells a thousand stories! Strict: Vintage keepsake, perfect for memorabilia enthusiasts."
+    },
+    {
+      "id": 16,
+      "title": "Collector's Gem",
+      "image": "/assets/collectible3.jpg",
+      "date": "2025-09-05",
+      "status": "Live",
+      "price": "₦52,000",
+      "desc": "Shine bright with this collector's gem! Strict: A rare collectible gem, authenticated and appraised."
+    },
+    {
+      "id": 17,
+      "title": "Retro Treasure",
+      "image": "/assets/collectible4.jpg",
+      "date": "2025-10-01",
+      "status": "Completed",
+      "price": "₦60,000",
+      "desc": "Treasure from the past, fun for the present! Strict: Retro collectible, recently sold at auction."
+    },
+    {
+      "id": 18,
+      "title": "Classic Furniture Set",
+      "image": "/assets/furniture3.jpg",
+      "date": "2025-07-18",
+      "status": "Upcoming",
+      "price": "₦180,000",
+      "desc": "Make your home a palace! Strict: Classic furniture set, crafted with premium materials."
+    },
+    {
+      "id": 19,
+      "title": "Modern Lounge Chair",
+      "image": "/assets/furniture4.jpg",
+      "date": "2025-08-25",
+      "status": "Live",
+      "price": "₦75,000",
+      "desc": "Sit back and relax in style! Strict: Modern lounge chair, ergonomic and stylish."
+    },
+    {
+      "id": 20,
+      "title": "Gallery Art V",
+      "image": "/assets/img5.jpg",
+      "date": "2025-09-09",
+      "status": "Upcoming",
+      "price": "₦55,000",
+      "desc": "Art that pops! Strict: Contemporary gallery artwork, ready to display."
+    },
+    {
+      "id": 21,
+      "title": "Gallery Art VI",
+      "image": "/assets/img6.jpg",
+      "date": "2025-10-20",
+      "status": "Completed",
+      "price": "₦62,000",
+      "desc": "Add a splash of color to your life! Strict: Modern art piece, recently auctioned."
+    },
+    {
+      "id": 22,
+      "title": "Elegant Jewel",
+      "image": "/assets/jewel1.jpg",
+      "date": "2025-07-30",
+      "status": "Live",
+      "price": "₦210,000",
+      "desc": "Shine like royalty! Strict: Elegant jewel, certified and appraised."
+    },
+    {
+      "id": 23,
+      "title": "Vintage Necklace",
+      "image": "/assets/jewel2.jpg",
+      "date": "2025-08-14",
+      "status": "Upcoming",
+      "price": "₦170,000",
+      "desc": "Wear history around your neck! Strict: Vintage necklace, rare and valuable."
+    },
+    {
+      "id": 24,
+      "title": "Diamond Ring",
+      "image": "/assets/jewel3.jpg",
+      "date": "2025-09-22",
+      "status": "Live",
+      "price": "₦350,000",
+      "desc": "Put a ring on it! Strict: Diamond ring, clarity and cut certified."
+    },
+    {
+      "id": 25,
+      "title": "Golden Bracelet",
+      "image": "/assets/jewel4.jpg",
+      "date": "2025-10-10",
+      "status": "Completed",
+      "price": "₦140,000",
+      "desc": "Bling for your wrist! Strict: Golden bracelet, hallmarked and authenticated."
+    },
+    {
+      "id": 26,
+      "title": "Sponsored Art I",
+      "image": "/assets/sponsored1.jpg",
+      "date": "2025-07-27",
+      "status": "Upcoming",
+      "price": "₦95,000",
+      "desc": "Sponsored by creativity! Strict: Sponsored artwork, limited edition."
+    },
+    {
+      "id": 27,
+      "title": "Sponsored Art II",
+      "image": "/assets/sponsored2.jpg",
+      "date": "2025-08-18",
+      "status": "Live",
+      "price": "₦110,000",
+      "desc": "Art with a cause! Strict: Sponsored art piece, proceeds to charity."
+    },
+    {
+      "id": 28,
+      "title": "Sponsored Art III",
+      "image": "/assets/sponsored3.jpg",
+      "date": "2025-09-12",
+      "status": "Upcoming",
+      "price": "₦105,000",
+      "desc": "Art that makes a difference! Strict: Sponsored artwork, exclusive release."
+    },
+    {
+      "id": 29,
+      "title": "Sponsored Art IV",
+      "image": "/assets/sponsored4.jpg",
+      "date": "2025-10-05",
+      "status": "Completed",
+      "price": "₦120,000",
+      "desc": "The grand finale of sponsored art! Strict: Sponsored art, final piece in the series."
+    }
+  ]
+

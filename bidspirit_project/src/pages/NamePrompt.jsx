@@ -18,6 +18,8 @@ const NamePrompt = ({ visitCount, handleNameSubmit }) => {
     return () => clearInterval(interval);
   }, []);
 
+  
+
   return (
     <>
       <Navbar firstName="" visitCount={visitCount} onAuthClick={() => {}} />

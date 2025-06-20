@@ -1,19 +1,60 @@
 import React, { useState } from "react";
 import { Form, InputGroup, Spinner } from "react-bootstrap";
 
+const searchHighlightStyle = {
+  backgroundColor: "#ffeb3b",
+  fontWeight: "bold",
+  borderRadius: "1.5px",
+  padding: "0 2px",
+};
+
+function highlightSearchMatch(text, query) {
+  if (!query || !text) return text;
+  const regex = new RegExp(`(${query})`, "gi");
+  const parts = text.split(regex);
+
+
+
+  return (
+    <>
+      {parts.map((part, idx) =>
+        regex.test(part) ? (
+          <span key={idx} style={searchHighlightStyle}>{part}</span>
+        ) : (
+          <React.Fragment key={idx}>{part}</React.Fragment>
+        )
+      )}
+    </>
+  );
+}
 
 const mockSearch = (query, products) =>
   new Promise((resolve) => {
     setTimeout(() => {
       if (!query) return resolve([]);
-      const q = query.toLowerCase();
-      resolve(
-        products.filter(
-          (p) =>
-            p.name.toLowerCase().includes(q) ||
-            (p.desc && p.desc.toLowerCase().includes(q))
-        )
+      const q = query.toLowerCase().trim();
+
+      const filteredSearch = products.filter(
+        (p) =>
+          (p.name && p.name.toLowerCase().includes(q)) ||
+          (p.desc && p.desc.toLowerCase().includes(q)) ||
+          (p.seller && p.seller.toLowerCase().includes(q)) ||
+          (p.category && p.category.toLowerCase().includes(q)) ||
+          (p.tags && p.tags.some((tag) => tag.toLowerCase().includes(q))) ||
+          (p.price && p.price.toLowerCase().includes(q))
       );
+      filteredSearch.sort((a, b) => {
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+        const aStarts = aName.startsWith(q);
+        const bStarts = bName.startsWith(q);
+        if (aStarts && !bStarts) return -1;
+        if (!aStarts && bStarts) return 1;
+        return aName.localeCompare(bName);
+      });
+
+      console.log(filteredSearch);
+      resolve(filteredSearch);
     }, 400);
   });
 
@@ -39,7 +80,7 @@ const SearchBar = ({ products = [], onResultClick }) => {
   };
 
   const handleBlur = () => {
-    setTimeout(() => setShowDropdown(false), 150); // allow click
+    setTimeout(() => setShowDropdown(false), 150);
   };
 
   return (
@@ -95,11 +136,9 @@ const SearchBar = ({ products = [], onResultClick }) => {
                     marginRight: 10,
                   }}
                 />
-                <span>
-                  <span className="fw-bold">{item.name}</span>
-                  <br />
-                  <span className="text-muted">{item.price}</span>
-                </span>
+                <div>
+                  <span className="fw-bold">{highlightSearchMatch(item.name, query)}</span>
+                </div>
               </div>
             ))
           ) : (
@@ -110,6 +149,5 @@ const SearchBar = ({ products = [], onResultClick }) => {
     </div>
   );
 };
-
 
 export default SearchBar;

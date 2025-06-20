@@ -10,6 +10,8 @@ const navLinks = [
   { to: "/about", label: "About" },
   { to: "/gallery", label: "Gallery" },
   { to: "/auctions", label: "Auctions" },
+  { to: "/feedback", label: "Feedback" },
+  { to: "/sitemap", label: "Site Map" },
 ];
 
   const Navbar = ({ onAuthClick, visitCount, firstName }) => {

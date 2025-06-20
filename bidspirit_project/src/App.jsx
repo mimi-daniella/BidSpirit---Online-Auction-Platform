@@ -1,50 +1,66 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { NavLink } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import Auctions from "./pages/Auctions";
-import Auth from "./pages/Auth";
+import Feedback from "./pages/Feedback";
+import Sitemap from "./pages/Sitemap";
 import NamePrompt from "./pages/NamePrompt";
 import Ticker from "./components/Ticker";
 
 function App() {
-  const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState(null);
   const [showAuth, setShowAuth] = useState(false);
-  const [visitCount, setVisitCount] = useState(1);
+  const [visitCount, setVisitCount] = useState(null);
 
+  //useEffect for visitor count
   useEffect(() => {
-    const storedVisits = localStorage.getItem('visits');
-    const count = storedVisits ? parseInt(storedVisits) + 1 : 1;
-    localStorage.setItem('visits', count);
-    setVisitCount(count);
+    if (!sessionStorage.getItem("visitCounted")) {
+      const storedVisits = localStorage.getItem("visits");
+      const count = storedVisits ? parseInt(storedVisits, 10) + 1 : 1;
+      localStorage.setItem("visits", count);
+      setVisitCount(count);
+      sessionStorage.setItem("visitCounted", "true");
+    } else {  
+      const storedVisits = localStorage.getItem("visits");
+      setVisitCount(storedVisits ? parseInt(storedVisits, 10) : 1);
+    }
   }, []);
 
+  //useEffect for firstName
   useEffect(() => {
-    if (firstName) {
-      localStorage.setItem("firstName", firstName);
+    const storedName = localStorage.getItem("firstName");
+    if (storedName) {
+      setFirstName(storedName);
     }
-  }, [firstName]);
+  }, []);
+
 
   const handleNameSubmit = (e) => {
     e.preventDefault();
     const value = e.target.elements.firstName.value.trim();
-    if (value) setFirstName(value);
+    if (value) {
+      setFirstName(value);
+      localStorage.setItem("firstName", value);
+    }
   };
 
   const tickerMessages = [
     "Welcome to BidSpirit! Enjoy seamless online auctions.",
     "New: Antique Collection Auction starts July 5th!",
     "Sign up now to participate in live bidding.",
-    "Contact support for any assistance."
+    "Contact support for any assistance.",
   ];
 
   return (
     <BrowserRouter>
-      {!firstName ? (
+      {firstName === null || visitCount === null ? (
+        <div>Loading...</div>
+      ) : !firstName ? (
         <NamePrompt
           visitCount={visitCount}
           handleNameSubmit={handleNameSubmit}
@@ -76,7 +92,16 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/auctions" element={<Auctions />} />
-              <Route path="/auth" element={<Auth />} />
+              <Route path="/sitemap" element={<Sitemap />} />
+              <Route path="/feedback" element={<Feedback />} />
+              <Route
+                path="/contact"
+                element={
+                  <h1 style={{ textAlign: "center", marginTop: "20px" }}>
+                    Contact Us page is under construction.
+                  </h1>
+                }
+              />
               <Route path="*" element={<h1>404 Not Found</h1>} />
             </Routes>
           </div>

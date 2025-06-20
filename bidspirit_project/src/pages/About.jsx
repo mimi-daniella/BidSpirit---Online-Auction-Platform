@@ -7,12 +7,24 @@ const About = () => (
     <div className="container">
       {/* About Intro Section */}
       <section className="mb-5">
-        <h1 className="fw-bold mb-3" style={{ color: "#11998e", fontSize: "2.5rem" }}>
+        <h1
+          className="fw-bold mb-3"
+          style={{ color: "#11998e", fontSize: "2.5rem" }}
+        >
           About <span style={{ color: "#43e97b" }}>BidSpirit</span>
         </h1>
         <p className="lead mb-4" style={{ maxWidth: 700 }}>
-          <b>BidSpirit</b> is Nigeria’s trusted online auction platform for art, antiques, collectibles, and more. 
-          We connect thousands of bidders and sellers nationwide, making auctions accessible, transparent, and exciting for everyone.
+          <b>BidSpirit</b> is Nigeria’s trusted online auction platform for art,
+          antiques, collectibles, and more. We connect thousands of bidders and
+          sellers nationwide, making auctions accessible, transparent, and
+          exciting for everyone.
+        </p>
+        <p className="text-muted mb-4" style={{ maxWidth: 700 }}>
+        <strong>Email:</strong> info@bidspirit.com
+          <br />
+          <strong>Address:</strong> 123 Auction Lane, Lagos, Nigeria
+          <br />
+          <strong>Contact:</strong> +234 800 123 4567
         </p>
         <div className="row">
           <div className="col-md-6 mb-4">
@@ -57,20 +69,28 @@ const About = () => (
           {/* Contact Info */}
           <div className="col-md-5 mb-4 mb-md-0">
             <div className="bg-white rounded shadow-sm p-4 h-100">
-              <h3 className="fw-bold mb-3" style={{ color: "#11998e" }}>Contact Us</h3>
+              <h3 className="fw-bold mb-3" style={{ color: "#11998e" }}>
+                Contact Us
+              </h3>
               <p className="mb-4 text-muted">
                 Have questions or need support? Reach out to us anytime!
               </p>
               <ul className="list-unstyled fs-5">
                 <li className="mb-3">
                   <i className="bi bi-envelope-fill text-success me-2"></i>
-                  <a href="mailto:support@bidspirit.co" className="text-decoration-none text-dark">
+                  <a
+                    href="mailto:support@bidspirit.co"
+                    className="text-decoration-none text-dark"
+                  >
                     support@bidspirit.co
                   </a>
                 </li>
                 <li className="mb-3">
                   <i className="bi bi-telephone-fill text-success me-2"></i>
-                  <a href="tel:+2348000000000" className="text-decoration-none text-dark">
+                  <a
+                    href="tel:+2348000000000"
+                    className="text-decoration-none text-dark"
+                  >
                     +234 800 000 0000
                   </a>
                 </li>
@@ -82,28 +102,63 @@ const About = () => (
             </div>
           </div>
           {/* Contact Form */}
-          <div className="col-md-7">
-            <div className="bg-white rounded shadow-sm p-4">
+          <div className="col-12 col-md-7 mb-4 mb-md-0">
+            <div className="bg-white rounded shadow-sm p-4 h-100">
+              <h3 className="fw-bold mb-3" style={{ color: "#11998e" }}>
+                Get in Touch
+              </h3>
               <form>
                 <div className="mb-3">
-                  <label className="form-label fw-semibold">Name</label>
-                  <input type="text" className="form-control" placeholder="Your Name" required />
+                  <label className="form-label fw-semibold" htmlFor="contactName">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="contactName"
+                    placeholder="Your Name"
+                    required
+                    autoComplete="off"
+                  />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label fw-semibold">Email</label>
-                  <input type="email" className="form-control" placeholder="Your Email" required />
+                  <label className="form-label fw-semibold" htmlFor="contactEmail">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="contactEmail"
+                    placeholder="Your Email"
+                    required
+                    autoComplete="off"
+                  />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label fw-semibold">Message</label>
-                  <textarea className="form-control" rows={4} placeholder="Type your message..." required></textarea>
+                  <label className="form-label fw-semibold" htmlFor="contactMessage">
+                    Message
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="contactMessage"
+                    rows={4}
+                    placeholder="Type your message..."
+                    required
+                    style={{ resize: "vertical" }}
+                  ></textarea>
                 </div>
-                <button type="submit" className="btn btn-success px-4 fw-bold">Send Message</button>
+                <div className="d-grid">
+                  <button type="submit" className="btn btn-success fw-bold py-2" style={{ borderRadius: 20 }}>
+                    <i className="bi bi-send me-2"></i>
+                    Send Message
+                  </button>
+                </div>
               </form>
             </div>
           </div>
+      {/* End Contact Section */}
         </div>
       </div>
-      {/* End Contact Section */}
     </div>
   </div>
 );
