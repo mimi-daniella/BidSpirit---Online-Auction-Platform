@@ -93,10 +93,13 @@ const About = () => (
                   >
                     +234 800 000 0000
                   </a>
+                  <a href="tel:+2348000000000" className="text-decoration-none text-dark">
+                    +234 816 945 3274 | +234 925 118 9230
+                  </a>
                 </li>
                 <li>
                   <i className="bi bi-geo-alt-fill text-success me-2"></i>
-                  Lagos, Nigeria
+                  12 Kunmi Adeyemo Close, Oke-Afa Isolo, Lagos. Nigeria
                 </li>
               </ul>
             </div>
@@ -108,6 +111,7 @@ const About = () => (
                 Get in Touch
               </h3>
               <form>
+                <h3 className="fw-bold mb-4" style={{ color: "#11998e" }}>Feedback</h3>
                 <div className="mb-3">
                   <label className="form-label fw-semibold" htmlFor="contactName">
                     Name

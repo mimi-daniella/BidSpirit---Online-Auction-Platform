@@ -25,7 +25,10 @@ const Auth = ({ onClose }) => {
     }
     setError("");
     setSuccess("Login successful!");
+<<<<<<< HEAD
    
+=======
+>>>>>>> origin/frontend-ui
   };
 
   const handleRegister = (e) => {
@@ -41,8 +44,12 @@ const Auth = ({ onClose }) => {
       return;
     }
     setError("");
+<<<<<<< HEAD
     setSuccess("Registration successful! You can start bidding now!");
 
+=======
+    setSuccess("Registration successful! You can now log in.");
+>>>>>>> origin/frontend-ui
   };
 
   return (

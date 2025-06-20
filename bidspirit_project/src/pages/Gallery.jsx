@@ -1,14 +1,13 @@
-// Fixed and optimized Gallery.jsx component
 
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import SearchBar from "../components/Searchbar";
 
-// Gallery data
+
 const galleryData = {
   "Fine Arts": [
     {
-      img: "/assets/fineart1.jpg",
+      img: "/assets/img1.jpg",
       name: "Sunset Over River",
       desc: "A beautiful landscape painting by A. Artist.",
       price: "₦250,000",
@@ -45,7 +44,13 @@ const galleryData = {
       desc: "Limited edition coin set from 1960.",
       price: "₦80,000",
     },
-  ],
+    {
+      img: "/assets/collectible2.jpg",
+      name: "Vintage Stamp Collection",
+      desc: "A collection of rare German postage stamps, perfect for philatelists and collectors.",
+      price: "#95,000"
+    }
+  ]
 };
 
 const TABS = Object.keys(galleryData);
@@ -67,7 +72,7 @@ const Gallery = () => {
     }
   }, [tabFromUrl]);
 
-  useLocation().search; // To trigger re-render on URL change
+  useLocation().search; 
 
   const filteredItems = galleryData[activeTab].filter(
     (item) =>

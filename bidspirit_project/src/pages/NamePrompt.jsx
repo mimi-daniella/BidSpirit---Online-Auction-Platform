@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 
-// Add your slideshow images here (use your own image paths)
 const SLIDES = [
   "https://static.vecteezy.com/system/resources/thumbnails/005/179/608/small/green-wave-abstract-background-wave-background-illustration-free-vector.jpg",
   "https://psdgraphics.com/wp-content/uploads/2013/05/green-design.jpg",
@@ -61,7 +60,7 @@ const NamePrompt = ({ visitCount, handleNameSubmit }) => {
               }}
             />
           ))}
-          {/* Optional: overlay for green tint */}
+        {/* Gradient overlay */}
           <div style={{
             position: "absolute",
             top: 0, left: 0, width: "100vw", height: "100vh",

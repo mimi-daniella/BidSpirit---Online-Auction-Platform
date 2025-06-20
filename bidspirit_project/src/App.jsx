@@ -87,23 +87,28 @@ function App() {
                 : {}
             }
           >
-            <Routes>
-              <Route path="/" element={<Home firstName={firstName} />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/auctions" element={<Auctions />} />
-              <Route path="/sitemap" element={<Sitemap />} />
-              <Route path="/feedback" element={<Feedback />} />
-              <Route
-                path="/contact"
-                element={
-                  <h1 style={{ textAlign: "center", marginTop: "20px" }}>
-                    Contact Us page is under construction.
-                  </h1>
-                }
-              />
-              <Route path="*" element={<h1>404 Not Found</h1>} />
-            </Routes>
+            <Navbar firstName={firstName} visitCount={visitCount} onAuthClick={() => {}} />
+              <br />
+            <Ticker messages={tickerMessages} />
+            <div style={showAuth ? { filter: "blur(6px)", pointerEvents: "none", userSelect: "none", paddingTop: "80px" } : {}} >
+              <Routes>
+                <Route path="/" element={<Home firstName={firstName} />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/auctions" element={<Auctions />} />
+                <Route path="/sitemap" element={<Sitemap />} />
+                <Route path="/feedback" element={<Feedback />} />
+                <Route
+                  path="/contact"
+                  element={
+                    <h1 style={{ textAlign: "center", marginTop: "20px" }}>
+                      Contact Us page is under construction.
+                    </h1>
+                  }
+                />
+                <Route path="*" element={<h1>404 Not Found</h1>} />
+              </Routes>
+            </div>
           </div>
           {showAuth && (
             <div

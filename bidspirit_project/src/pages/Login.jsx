@@ -10,7 +10,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your authentication logic here
     if (!form.email || !form.password) {
       setError("Please enter both email and password.");
       return;
