@@ -1,4 +1,5 @@
-body{
-    /* overflow: hidden; */
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
+
+  font-family: "Poppins", Arial, sans-serif !important;
 }

@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Gallery from "./pages/Gallery";
+import Auth from "./pages/Auth";
 import Auctions from "./pages/Auctions";
 import Feedback from "./pages/Feedback";
 import Sitemap from "./pages/Sitemap";
@@ -87,9 +88,7 @@ function App() {
                 : {}
             }
           >
-            <Navbar firstName={firstName} visitCount={visitCount} onAuthClick={() => {}} />
-              <br />
-            <Ticker messages={tickerMessages} />
+
             <div style={showAuth ? { filter: "blur(6px)", pointerEvents: "none", userSelect: "none", paddingTop: "80px" } : {}} >
               <Routes>
                 <Route path="/" element={<Home firstName={firstName} />} />
@@ -98,6 +97,7 @@ function App() {
                 <Route path="/auctions" element={<Auctions />} />
                 <Route path="/sitemap" element={<Sitemap />} />
                 <Route path="/feedback" element={<Feedback />} />
+                <Route path="/register" element={<Auth onClose={() => setShowAuth(false)} />} />
                 <Route
                   path="/contact"
                   element={

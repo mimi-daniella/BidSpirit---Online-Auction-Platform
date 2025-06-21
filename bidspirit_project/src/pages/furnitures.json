@@ -1,0 +1,38 @@
+[
+  {
+    "id": 7,
+    "title": "Elegant Sofa",
+    "image": "/assets/furniture1.jpg",
+    "date": "2025-07-08",
+    "status": "Upcoming",
+    "price": "₦120,000",
+    "desc": "A luxurious and comfortable sofa for your living room."
+  },
+  {
+    "id": 8,
+    "title": "Wooden Chair",
+    "image": "/assets/furniture2.jpg",
+    "date": "2025-07-09",
+    "status": "Completed",
+    "price": "₦18,000",
+    "desc": "A handcrafted wooden chair with a classic design."
+  },
+  {
+    "id": 18,
+    "title": "Classic Furniture Set",
+    "image": "/assets/furniture3.jpg",
+    "date": "2025-07-18",
+    "status": "Upcoming",
+    "price": "₦180,000",
+    "desc": "Make your home a palace! Strict: Classic furniture set, crafted with premium materials."
+  },
+  {
+    "id": 19,
+    "title": "Modern Lounge Chair",
+    "image": "/assets/furniture4.jpg",
+    "date": "2025-08-25",
+    "status": "Live",
+    "price": "₦75,000",
+    "desc": "Sit back and relax in style! Strict: Modern lounge chair, ergonomic and stylish."
+  }
+]

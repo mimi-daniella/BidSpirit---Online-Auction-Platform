@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const leaders = [
   {
-    name: "Daniella Smith",
+    name: "Daniella Alagwu",
     role: "CEO & Founder",
     img: "https://static.vecteezy.com/system/resources/thumbnails/033/168/347/small/an-attractive-african-american-business-woman-smiling-ai-generative-free-photo.jpg",
     socials: ["linkedin", "twitter", "email"]

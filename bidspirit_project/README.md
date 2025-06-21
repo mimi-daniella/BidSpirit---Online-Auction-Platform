@@ -111,6 +111,9 @@ This is a web-based Antique & Fine Arts Auction Portal that allows users to brow
 git clone https://github.com/mimi-daniella/BidSpirit---Online-Auction-Platform
 ```
 
+**Run npm install to install dependencies.**
+**Run npm run build to build the project.** 
+
 **Navigate to the project directory.**
 
 **Open index.html in any modern browser (Chrome/Firefox/Edge).**

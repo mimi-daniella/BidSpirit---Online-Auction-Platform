@@ -73,6 +73,8 @@ const auctionsWithImages = auctions.map((a) => ({
   image: imageMap[a.image] || imageMap[a.imageUrl] || a.image || a.imageUrl,
 }));
 
+const cardColor = "#f8f9fa";
+
 const Auctions = () => {
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState("All");
@@ -115,20 +117,24 @@ const Auctions = () => {
       className="auctions-bg py-5"
       style={{
         minHeight: "100vh",
-        background:
-          "linear-gradient(120deg, #e6fff3 0%, #b2f7cc 40%, #43e97b 100%)",
+        background: "#fff",
         padding: "32px 0",
       }}
     >
-      <div className="container" style={{ padding: "0 24px" }}>
+      <div className="container" style={{ padding: "0 8px" }}>
         <h1
           className="fw-bold mb-4 text-center"
-          style={{ color: "#11998e", letterSpacing: "1px" }}
+          style={{
+            color: "#111",
+            letterSpacing: "1px",
+            fontFamily: "'Fondamento', cursive",
+            fontSize: "2.5rem",
+          }}
         >
           Auctions
         </h1>
 
-        <ul className="nav nav-pills justify-content-center mb-4">
+        <ul className="nav nav-pills justify-content-center mb-4 flex-wrap">
           {TABS.map((tab) => (
             <li className="nav-item" key={tab}>
               <button
@@ -140,8 +146,10 @@ const Auctions = () => {
                   background: activeTab === tab ? "#11998e" : "transparent",
                   border: "1.5px solid #11998e",
                   marginRight: 8,
-                  minWidth: 120,
+                  minWidth: 100,
                   transition: "all 0.2s",
+                  borderRadius: 20,
+                  fontSize: "1rem",
                 }}
                 onClick={() => {
                   setActiveTab(tab);
@@ -168,17 +176,20 @@ const Auctions = () => {
               key={auction.id}
             >
               <div
-                className="card h-100 shadow-sm flex-fill"
+                className="card h-100 flex-fill"
                 onClick={() => setModalAuction(auction)}
                 style={{
                   cursor: "pointer",
                   border: "1.5px solid #e6fff3",
                   borderRadius: 16,
                   transition: "transform 0.18s, box-shadow 0.18s",
-                  boxShadow: "0 4px 16px rgba(67,233,123,0.10)",
+                  boxShadow:
+                    "0 4px 18px rgba(67,233,123,0.13), 0 1.5px 8px rgba(0,0,0,0.04)",
                   display: "flex",
                   flexDirection: "column",
                   height: "100%",
+                  background: cardColor,
+                  minWidth: 0,
                 }}
               >
                 <img
@@ -186,20 +197,32 @@ const Auctions = () => {
                   alt={auction.title}
                   className="card-img-top"
                   style={{
-                    height: 180,
+                    height: 160,
+                    minHeight: 120,
+                    minWidth: 120,
                     objectFit: "cover",
                     borderTopLeftRadius: 16,
                     borderTopRightRadius: 16,
+                    width: "100%",
                   }}
+                  loading="lazy"
                 />
-                <div className="card-body d-flex flex-column">
+                <div className="card-body d-flex flex-column p-3">
                   <h5
-                    className="card-title fw-bold"
-                    style={{ color: "#11998e" }}
+                    className="card-title fw-bold text-center"
+                    style={{
+                      color: "#11998e",
+                      fontFamily: "'Fondamento', cursive",
+                      fontSize: "1.15rem",
+                      minHeight: 48,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
                   >
                     {auction.title}
                   </h5>
-                  <p className="mb-2">
+                  <p className="mb-2 text-center">
                     <span
                       className={`badge px-3 py-2 fw-semibold ${
                         auction.status === "Live"
@@ -214,21 +237,24 @@ const Auctions = () => {
                     </span>
                   </p>
                   {auction.status === "Live" && (
-                    <p className="mb-1 text-danger fw-bold">
+                    <p className="mb-1 text-danger fw-bold text-center">
                       <i className="bi bi-clock-history me-1"></i>Ends soon!
                     </p>
                   )}
-                  <p className="mb-1 text-muted" style={{ fontSize: ".98rem" }}>
+                  <p
+                    className="mb-1 text-muted text-center"
+                    style={{ fontSize: ".98rem" }}
+                  >
                     Date: {auction.date}
                   </p>
                   <p
-                    className="mb-2"
+                    className="mb-2 text-center"
                     style={{ fontSize: ".97rem", color: "#555" }}
                   >
                     {auction.desc}
                   </p>
                   <p
-                    className="fw-bold mt-auto"
+                    className="fw-bold mt-auto text-center"
                     style={{ color: "#11998e", fontSize: "1.1rem" }}
                   >
                     <span style={{ color: "black", fontWeight: "bolder" }}>
@@ -242,7 +268,7 @@ const Auctions = () => {
                       e.stopPropagation();
                       setModalAuction(auction);
                     }}
-                    style={{ borderRadius: 20 }}
+                    style={{ borderRadius: 20, fontSize: ".98rem" }}
                   >
                     View Auction
                   </button>
@@ -303,7 +329,10 @@ const Auctions = () => {
                 <div className="modal-header border-0">
                   <h5
                     className="modal-title fw-bold"
-                    style={{ color: "#11998e" }}
+                    style={{
+                      color: "#11998e",
+                      fontFamily: "'Fondamento', cursive",
+                    }}
                   >
                     {modalAuction.title}
                   </h5>
@@ -320,6 +349,8 @@ const Auctions = () => {
                     className="img-fluid mb-3"
                     style={{
                       maxHeight: 220,
+                      minWidth: 180,
+                      minHeight: 120,
                       borderRadius: 12,
                       objectFit: "cover",
                     }}

@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 
 const Register = () => {
-  const [form, setForm] = useState({ name: "", email: "", password: "", confirm: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirm: "",
+  });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -29,9 +34,18 @@ const Register = () => {
       <div className="row justify-content-center">
         <div className="col-md-5">
           <div className="card shadow-sm p-4">
-            <h2 className="fw-bold mb-4 text-center" style={{ color: "#11998e" }}>Sign Up</h2>
+            <h2
+              className="fw-bold mb-4 text-center"
+              style={{ color: "#11998e" }}
+            >
+              Sign Up
+            </h2>
             {error && <div className="alert alert-danger">{error}</div>}
-            {success && <div className="alert alert-success">Registration successful! You can now log in.</div>}
+            {success && (
+              <div className="alert alert-success">
+                Registration successful! You can now log in.
+              </div>
+            )}
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label className="form-label fw-semibold">Name</label>
@@ -67,7 +81,9 @@ const Register = () => {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label fw-semibold">Confirm Password</label>
+                <label className="form-label fw-semibold">
+                  Confirm Password
+                </label>
                 <input
                   type="password"
                   className="form-control"
@@ -77,10 +93,19 @@ const Register = () => {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-success w-100 fw-bold">Register</button>
+              <button type="submit" className="btn btn-success w-100 fw-bold">
+                Register
+              </button>
             </form>
             <div className="text-center mt-3">
-              Already have an account? <a href="/login" className="text-decoration-none" style={{ color: "#11998e" }}>Login</a>
+              Already have an account?{" "}
+              <a
+                href="/login"
+                className="text-decoration-none"
+                style={{ color: "#11998e" }}
+              >
+                Login
+              </a>
             </div>
           </div>
         </div>

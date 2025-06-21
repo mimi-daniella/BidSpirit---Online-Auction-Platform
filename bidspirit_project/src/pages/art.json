@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "title": "Modern Art",
+      "image": "/assets/img1.jpg",
+      "price": "₦50,000",
+      "desc": "A vibrant piece of modern art, perfect for contemporary spaces."
+    },
+    {
+      "id": 2,
+      "title": "Classic Portrait",
+      "image": "/assets/img2.jpg",
+      "price": "₦35,000",
+      "desc": "A timeless classic portrait, beautifully framed."
+    },
+    {
+      "id": 3,
+      "title": "Abstract Colors",
+      "image": "/assets/img3.jpg",
+      "price": "₦42,000",
+      "desc": "An abstract painting with bold colors and dynamic shapes."
+    },
+    {
+      "id": 4,
+      "title": "Nature's Beauty",
+      "image": "/assets/img4.jpg",
+      "price": "₦28,000",
+      "desc": "A serene landscape capturing the beauty of nature"
+    }
+]

@@ -1,0 +1,29 @@
+[
+    {
+      "id": 1,
+      "title": "Rare Coin Set",
+      "image": "/assets/collectible1.jpg",
+      "price": "₦80,000",
+      "desc": "Limited edition coin set from 1960."
+    },
+    {
+      "id": 2,
+      "title": "Vintage Stamp Collection",
+      "image": "/assets/collectible2.jpg",
+      "price": "₦95,000",
+      "desc": "A collection of rare German postage stamps, perfect for philatelists and collectors."
+    },
+    {
+      "id": 3,
+      "title": "Classic Comic Book",
+      "image": "/assets/collectible3.jpg",
+      "price": "₦60,000",
+      "desc": "First edition superhero comic book in excellent condition."
+    },
+    {
+      "id": 4,
+      "title": "Signed Football",
+      "image": "/assets/collectible4.jpg",
+      "price": "₦110,000",
+      "desc": "Football signed by legendary players, comes with certificate of authenticity."}
+]

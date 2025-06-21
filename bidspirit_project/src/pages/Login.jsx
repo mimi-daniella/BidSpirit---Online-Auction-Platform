@@ -15,7 +15,7 @@ const Login = () => {
       return;
     }
     setError("");
-    // Redirect or show success message here
+  
     alert("Login successful!");
   };
 

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 22,
+    "title": "Elegant Jewel",
+    "image": "/assets/jewel1.jpg",
+    "date": "2025-07-30",
+    "status": "Live",
+    "price": "₦210,000",
+    "desc": "Shine like royalty! Strict: Elegant jewel, certified and appraised."
+  },
+  {
+    "id": 23,
+    "title": "Vintage Necklace",
+    "image": "/assets/jewel2.jpg",
+    "date": "2025-08-14",
+    "status": "Upcoming",
+    "price": "₦170,000",
+    "desc": "Wear history around your neck! Strict: Vintage necklace, rare and valuable."
+  },
+  {
+    "id": 24,
+    "title": "Diamond Ring",
+    "image": "/assets/jewel3.jpg",
+    "date": "2025-09-22",
+    "status": "Live",
+    "price": "₦350,000",
+    "desc": "Put a ring on it! Strict: Diamond ring, clarity and cut certified."
+  },
+  {
+    "id": 25,
+    "title": "Golden Bracelet",
+    "image": "/assets/jewel4.jpg",
+    "date": "2025-10-10",
+    "status": "Completed",
+    "price": "₦140,000",
+    "desc": "Bling for your wrist! Strict: Golden bracelet, hallmarked and authenticated."
+  }
+]

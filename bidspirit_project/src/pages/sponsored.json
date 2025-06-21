@@ -1,0 +1,38 @@
+[
+  {
+    "id": 26,
+    "title": "Sponsored Art I",
+    "image": "/assets/sponsored1.jpg",
+    "date": "2025-07-27",
+    "status": "Upcoming",
+    "price": "₦95,000",
+    "desc": "Sponsored by creativity! Strict: Sponsored artwork, limited edition."
+  },
+  {
+    "id": 27,
+    "title": "Sponsored Art II",
+    "image": "/assets/sponsored2.jpg",
+    "date": "2025-08-18",
+    "status": "Live",
+    "price": "₦110,000",
+    "desc": "Art with a cause! Strict: Sponsored art piece, proceeds to charity."
+  },
+  {
+    "id": 28,
+    "title": "Sponsored Art III",
+    "image": "/assets/sponsored3.jpg",
+    "date": "2025-09-12",
+    "status": "Upcoming",
+    "price": "₦105,000",
+    "desc": "Art that makes a difference! Strict: Sponsored artwork, exclusive release."
+  },
+  {
+    "id": 29,
+    "title": "Sponsored Art IV",
+    "image": "/assets/sponsored4.jpg",
+    "date": "2025-10-05",
+    "status": "Completed",
+    "price": "₦120,000",
+    "desc": "The grand finale of sponsored art! Strict: Sponsored art, final piece in the series."
+  }
+]

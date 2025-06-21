@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 
 const Ticker = () => {
   const [location, setLocation] = useState("Detecting location...");
@@ -46,6 +46,7 @@ const Ticker = () => {
     month: "long",
     day: "numeric",
   });
+
   const formattedTime = dateTime.toLocaleTimeString(undefined, {
     hour: "2-digit",
     minute: "2-digit",
@@ -61,9 +62,9 @@ const Ticker = () => {
         left: 0,
         width: "100vw",
         background: "linear-gradient(90deg, #11998e 0%, #38f9d7 100%)",
-        color: "#fff",
+        color: "black",
         zIndex: 9999,
-        fontWeight: 500,
+        fontWeight: 600,
         fontSize: "1rem",
         overflow: "hidden",
         height: 48,
@@ -72,49 +73,48 @@ const Ticker = () => {
         boxShadow: "0 -2px 12px rgba(67,233,123,0.10)",
       }}
     >
-      <div
-        className="ticker-content"
-        style={{
-          whiteSpace: "nowrap",
-          animation: "ticker-scroll 18s linear infinite",
-          display: "inline-block",
-          minWidth: "100%",
-          fontSize: "1.05rem",
-          letterSpacing: ".02em",
-        }}
-      >
-        <span style={{ marginRight: 48 }}>
-          <i className="bi bi-calendar-event me-2"></i>
-          <span className="fw-semibold">{formattedDate}</span>
-        </span>
-        <span style={{ marginRight: 48 }}>
-          <i className="bi bi-clock me-2"></i>
-          <span className="fw-semibold">{formattedTime}</span>
-        </span>
-        <span>
-          <i className="bi bi-geo-alt-fill me-2"></i>
-          <span className="fw-semibold">{location}</span>
-        </span>
+      <div className="ticker-track">
+        <div className="ticker-content">
+          <span>📅 {formattedDate}</span>
+          <span style={{ marginRight: "3rem" }}></span>
+          <span>🕒 {formattedTime}</span>
+          <span style={{ marginRight: "3rem" }}></span>
+          <span>📍 {location}</span>
+          <span style={{ marginRight: "6rem" }}></span>
+          <span>📅 {formattedDate}</span>
+          <span style={{ marginRight: "3rem" }}></span>
+          <span>🕒 {formattedTime}</span>
+          <span style={{ marginRight: "3rem" }}></span>
+          <span>📍 {location}</span>
+        </div>
       </div>
+
       <style>
         {`
-          @keyframes ticker-scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-          }
-          @media (max-width: 600px) {
-            .ticker-bar {
-              font-size: 0.92rem !important;
-              height: 40px !important;
-            }
-            .ticker-content span {
-              margin-right: 24px !important;
-            }
-          }
+        @keyframes ticker-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        .ticker-track {
+          width: 100%;
+          overflow: hidden;
+          display: flex;
+        }
+
+        .ticker-content {
+          display: inline-flex;
+          white-space: nowrap;
+          animation: ticker-scroll 18s linear infinite;
+        }
+
+        .ticker-content span {
+          margin-right: 48px;
+        }
         `}
       </style>
     </div>
   );
 };
 
-export default Ticker;
+export default memo(Ticker);

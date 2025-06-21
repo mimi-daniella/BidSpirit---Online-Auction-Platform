@@ -1,0 +1,38 @@
+[
+  {
+    "id": 5,
+    "title": "Antique Telescope",
+    "image": "/assets/antique1.jpg",
+    "date": "2025-07-05",
+    "status": "Upcoming",
+    "price": "₦60,000",
+    "desc": "A rare antique telescope for collectors and enthusiasts."
+  },
+  {
+    "id": 6,
+    "title": "Vintage Clock",
+    "image": "/assets/antique2.jpg",
+    "date": "2025-07-07",
+    "status": "Live",
+    "price": "₦30,000",
+    "desc": "A vintage clock with intricate details and craftsmanship."
+  },
+  {
+    "id": 9,
+    "title": "Tim's Telephone",
+    "image": "/assets/antique4.jpg",
+    "date": "2025-08-19",
+    "status": "Upcoming",
+    "price": "₦23,000",
+    "desc": "An antique telephone with intricate carvings, perfect for collectors."
+  },
+  {
+    "id": 10,
+    "title": "Antique Gramophone",
+    "image": "/assets/antique3.jpg",
+    "date": "2025-09-12",
+    "status": "Upcoming",
+    "price": "₦85,000",
+    "desc": "Spin up some vintage vibes with this classic gramophone! Strict: A well-preserved antique gramophone, ideal for collectors."
+  }
+]

@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import React, { useState, memo } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Navbar as BsNavbar, Nav, Container } from "react-bootstrap";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.jpg";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "../styles/Navbar.css";
 
 const navLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/gallery", label: "Gallery" },
   { to: "/auctions", label: "Auctions" },
-  { to: "/feedback", label: "Feedback" },
   { to: "/sitemap", label: "Site Map" },
+  { to: "/register", label: "Sign Up" },
 ];
 
 const Navbar = ({ onAuthClick, visitCount, firstName }) => {
@@ -19,104 +18,174 @@ const Navbar = ({ onAuthClick, visitCount, firstName }) => {
   const location = useLocation();
 
   return (
-    <BsNavbar
-      expand="md"
-      bg="light"
-      fixed="top"
-      className="border-bottom shadow-sm fade-in-navbar"
-      expanded={expanded}
-    >
-      <Container fluid>
-        <div className="d-flex align-items-center">
+    <nav>
+      <BsNavbar
+        expand="md"
+        bg="light"
+        fixed="top"
+        className="border-bottom shadow-sm fade-in-navbar"
+        expanded={expanded}
+        as="header"
+        role="navigation"
+      >
+        <Container
+          fluid
+          className="d-flex flex-nowrap align-items-center"
+          style={{ minWidth: 0 }}
+        >
           <BsNavbar.Brand
             as={Link}
             to="/"
             className="fw-bold d-flex align-items-center me-3 mb-0"
+            style={{ minWidth: 0 }}
           >
             <img
               src={logo}
               alt="BidSpirit Logo"
+              width={38}
+              height={38}
               style={{
-                height: 38,
-                width: 38,
                 marginRight: 10,
                 borderRadius: "50%",
                 objectFit: "cover",
+                flexShrink: 0,
               }}
+              loading="lazy"
             />
-            BidSpirit
-          </BsNavbar.Brand>
-        </div>
-
-        <BsNavbar.Toggle
-          aria-controls="navbar-content"
-          onClick={() => setExpanded((prev) => !prev)}
-        />
-
-        <BsNavbar.Collapse id="navbar-content">
-          <Nav
-            className="ms-auto align-items-center"
-            style={{ marginRight: "2.5rem" }}
-          >
-            {navLinks.map((link) => (
-              <Nav.Link
-                as={Link}
-                to={link.to}
-                key={link.to}
-                onClick={() => setExpanded(false)}
-                className={`custom-nav-link ${
-                  location.pathname === link.to ? "active" : ""
-                }`}
-              >
-                {link.label}
-              </Nav.Link>
-            ))}
-
-            <Nav.Link
-              as="button"
-              className="btn btn-success fw-bold ms-2"
-              style={{ padding: "7px 18px", fontSize: "1rem" }}
-              onClick={() => {
-                setExpanded(false);
-                if (onAuthClick) onAuthClick();
-              }}
-            >
-              Sign Up
-            </Nav.Link>
-          </Nav>
-
-          <div
-            className="d-none d-md-flex align-items-center ms-3"
-            style={{ gap: "10px" }}
-          >
             <span
-              className="text-secondary"
-              style={{ fontSize: "1rem", whiteSpace: "nowrap" }}
+              className="d-none d-sm-inline"
+              style={{ color: "#F78B51", fontWeight: 700, fontSize: "1.3rem" }}
             >
-              <i className="bi bi-people me-1"></i>
-              Visitors: {visitCount}
+              BidSpirit
             </span>
+          </BsNavbar.Brand>
 
-            {firstName && (
-              <div
-                style={{
-                  background: "#fff",
-                  borderRadius: "20px",
-                  boxShadow: "0 2px 8px rgba(67,233,123,0.10)",
-                  padding: "6px 14px",
-                  fontWeight: 600,
-                  color: "#11998e",
-                  fontSize: "1rem",
-                }}
+          <BsNavbar.Toggle
+            aria-controls="navbar-content"
+            aria-label="Toggle navigation"
+            onClick={() => setExpanded((prev) => !prev)}
+          />
+
+          <BsNavbar.Collapse id="navbar-content" as="nav">
+            <Nav
+              className="navbar-nav ms-auto align-items-center flex-nowrap"
+              style={{ marginRight: "1rem", gap: "0.5rem" }}
+              as="ul"
+            >
+              {navLinks.map((link) => (
+                <Nav.Item as="li" key={link.to}>
+                  <Nav.Link
+                    as={Link}
+                    to={link.to}
+                    onClick={() => setExpanded(false)}
+                    className={`custom-nav-link px-2 py-1 ${
+                      location.pathname === link.to ? "active" : ""
+                    }`}
+                    style={{
+                      color: location.pathname === link.to ? "#fff" : "#000",
+                      background:
+                        location.pathname === link.to
+                          ? "#11998e"
+                          : "transparent",
+                      fontWeight: 500,
+                      transition: "background 0.2s, color 0.2s",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    {link.label}
+                  </Nav.Link>
+                </Nav.Item>
+              ))}
+              <Nav.Item as="li" className="d-md-none">
+                <button
+                  className="btn btn-success fw-bold w-100 mt-2"
+                  style={{ fontSize: "1rem", borderRadius: 20 }}
+                  onClick={() => {
+                    setExpanded(false);
+                    if (onAuthClick) onAuthClick();
+                  }}
+                  type="button"
+                >
+                  Sign Up
+                </button>
+              </Nav.Item>
+            </Nav>
+
+            <div
+              className="d-none d-md-flex align-items-center ms-3"
+              style={{ gap: "10px" }}
+            >
+              <span
+                className="text-secondary"
+                style={{ fontSize: "1rem", whiteSpace: "nowrap" }}
               >
-                {firstName}
-              </div>
-            )}
-          </div>
-        </BsNavbar.Collapse>
-      </Container>
-    </BsNavbar>
+                <i className="bi bi-people me-1"></i>
+                Visitor Count: {visitCount}
+              </span>
+            </div>
+          </BsNavbar.Collapse>
+        </Container>
+      </BsNavbar>
+
+      <style>
+        {`
+  @keyframes borderBottomIn {
+    0% { border-bottom-width: 0.5px; border-bottom-color: #C85B20; }
+    60% { border-bottom-width: 1px; border-bottom-color: #C85B20; }
+    100% { border-bottom-width: 2.5px; border-bottom-color: #C85B20; }
+  }
+  .custom-nav-link {
+    transition: background 0.2s, color 0.2s, border-bottom 0.2s;
+    border-bottom: 0 solid transparent;
+    background: transparent !important;
+    border-radius: 0 !important;
+    white-space: nowrap;
+  }
+  .custom-nav-link:hover {
+    color: #C85B20 !important;
+    background: transparent !important;
+    animation: borderBottomIn 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+    border-bottom: 2.5px solid #C85B20 !important;
+    border-radius: 0 !important;
+  }
+  .custom-nav-link.active,
+  .custom-nav-link:active {
+    color: #1A237E !important;
+    background: transparent !important;
+    border-bottom: none !important;
+    border-radius: 0 !important;
+    animation: none !important;
+  }
+  .navbar-nav {
+    white-space: nowrap;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    align-items: center;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+  @media (max-width: 991.98px) {
+    .navbar-nav {
+      gap: 0.2rem !important;
+    }
+    .custom-nav-link {
+      padding-left: 0.7rem !important;
+      padding-right: 0.7rem !important;
+    }
+  }
+  @media (max-width: 767.98px) {
+    .fade-in-navbar {
+      font-size: 0.98rem;
+    }
+    .custom-nav-link {
+      padding: 0.7rem 1rem !important;
+      border-radius: 8px !important;
+    }
+  }
+`}
+      </style>
+    </nav>
   );
 };
 
-export default Navbar;
+export default memo(Navbar);
